@@ -1,0 +1,20 @@
+voxel_subtraction_node:
+  ros__parameters:
+    # Path to your static map PCD file
+    static_map_path: "/home/iko/localization_ws/src/ndt_omp_ros2/data/bitlab.pcd"
+
+    # Voxel size in meters (0.2m = 20cm cubes)
+    voxel_size: 0.2
+
+    # Topic names
+    cloud_topic: "/cloud"
+    pose_topic: "/amcl_pose"
+
+    # Activation zone: only run subtraction when a dynamic obstacle
+    # is within this distance (meters) and FOV (degrees) of the robot
+    activation_distance: 1.0
+    fov_angle_deg: 120.0
+
+    # Z-axis filter to ignore ground and ceiling points
+    min_z: -0.3
+    max_z: 2.5
