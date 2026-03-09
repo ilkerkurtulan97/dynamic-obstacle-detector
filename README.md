@@ -41,12 +41,6 @@ If a voxel appears in the live scan but NOT in the inflated static map, it is a 
     └── package.xml
 ```
 
-## Static Map PCD File
-
-Located at: `/home/iko/localization_ws/src/ndt_omp_ros2/data/bitlab.pcd`
-- 268,250 points, XYZI format, binary
-- Same file used by the NDT localization node
-
 ## Topics
 
 ### Subscribed
@@ -105,23 +99,3 @@ rviz2
 # Add: MarkerArray -> /dynamic_obstacles_markers (red cubes = dynamic obstacles)
 ```
 
-## Bag File
-
-Location: `/home/iko/localization_ws/bitlab_ros2/`
-- Duration: ~92 seconds, 923 LiDAR scans (~10Hz)
-- Key topics: `/cloud` (PointCloud2, map frame), `/amcl_pose` (200 msgs, ~2Hz)
-- Converted from ROS1 to ROS2 Humble
-
-## Related Workspaces
-
-- `/home/iko/localization_ws/` — NDT localization (lidar_localization_ros2, ndt_omp_ros2)
-- `/home/iko/ros2_ws/` — Navigation, path planning, vehicle description
-
-## Concept (from PhD advisor)
-
-The PhD student's key advice:
-- Voxel size 0.2m is the default
-- 3x3x3 inflation handles pose error tolerance
-- No need for external libraries like octomap — simple hash-based voxelization is sufficient
-- `dynamic = live_voxels - inflated_static_voxels`
-- C/C++ for performance (Python arrays too slow for real-time)
